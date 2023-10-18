@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cart, CartItem } from 'src/app/models/cart.module';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -30,11 +31,27 @@ export class CartComponent {
       'total', 
       'action',
   ] 
+  constructor (private cartService: CartService) {
+  }
   ngOnInit() : void {
-    this.dataSource = this.cart.items
+    this.cartService.cart.subscribe((_cart : Cart) => {
+      this.cart = _cart
+      this.dataSource = this.cart.items
+    })
   }
   getTotal(items: Array<CartItem>) : number{ 
-    return items.map(item => item.price * item.quantity).reduce((prev, current) =>  prev + current, 0)
+    return this.cartService.getTotal(items)
   }
-  console = console
+  onClearCart () : void {
+    this.cartService.clearCart()
+  }
+  onRemoveFromCart(item: CartItem) {
+    this.cartService.removeFromCart(item)
+  }
+  onAddQuatity(item: CartItem) : void{
+    this.cartService.addToCart(item)
+  }
+  onRemoveQuatity(item: CartItem) : void{
+    this.cartService.removeQuantity(item)
+  }
  }

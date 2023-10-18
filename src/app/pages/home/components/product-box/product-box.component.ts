@@ -21,6 +21,6 @@ export class ProductBoxComponent {
   
   
   onAddToCart() : void {
-
+    this.addToCart.emit(this.product)
   }
 }
