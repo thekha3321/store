@@ -1,10 +1,11 @@
-<mat-card [ngClass]="{'text-center' : !fullwidthMode}">
+<mat-card *ngIf="product" [ngClass]="{'text-center' : !fullwidthMode}">
   <div>
-    <img [ngClass]="{'h-200px' : !fullwidthMode, 'h-[360px]' : !fullwidthMode}" class="mb-1 mx-auto h-[200px]" src="https://via.placeholder.com/150" alt="" />
+    <img [ngClass]="{'h-200px' : !fullwidthMode, 'h-[360px]' : !fullwidthMode}" class="mb-1 mx-auto h-[200px]"
+     [src]="product?.image" alt="" />
     <div class="w-full" [ngClass]="{'px-8 flex flex-col justify-between' : fullwidthMode}">
       <div>
-        <h5>shoes</h5>
-        <p class="truncate hover:whitespace-normal">snickers</p>
+        <h5>{{product?.category}}</h5>
+        <p class="truncate hover:whitespace-normal">{{product?.title}}</p>
         <p *ngIf="fullwidthMode">description</p>
       </div>
       <div class="flex justify-between">
