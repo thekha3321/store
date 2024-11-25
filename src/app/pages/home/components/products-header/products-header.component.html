@@ -13,7 +13,7 @@
     <div class="flex items-center">
       <div>
         <button mat-button [matMenuTriggerFor]="menu">
-          Show {{ itemsShowCount }}
+          Show {{ itemsShowCount == 1 ? 12 : itemsShowCount == 3 ? 24 : 36 }}
           <mat-icon>expand_more</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
