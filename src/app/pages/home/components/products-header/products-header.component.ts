@@ -20,6 +20,7 @@ export class ProductsHeaderComponent {
     this.itemsShowCount = count;
     this.columnsCountChange.emit(count);
   }
+
   onColumnUpdate(colsNum: number): void {
     this.columnsCountChange.emit(colsNum);
   }
