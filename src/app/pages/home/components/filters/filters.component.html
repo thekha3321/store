@@ -12,10 +12,17 @@
 </mat-expansion-panel> -->
 <div>
   <button mat-button [matMenuTriggerFor]="menu">
-      CATEGORIES
-      <mat-icon>expand_more</mat-icon>
+    CATEGORIES
+    <mat-icon>expand_more</mat-icon>
   </button>
-  <mat-menu  yPosition="above" #menu="matMenu" class="w-28">
-      <button  class="px-4"  *ngFor="let category of categories"  (click)="onShowCategory(category)" mat-menu-item>{{category}}</button>
+  <mat-menu yPosition="above" #menu="matMenu">
+    <button
+      class="px-4"
+      *ngFor="let category of categories"
+      (click)="onShowCategory(category)"
+      mat-menu-item
+    >
+      {{ category | uppercase }}
+    </button>
   </mat-menu>
 </div>
